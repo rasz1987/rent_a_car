@@ -17,33 +17,32 @@ class Users extends CI_Controller {
 	//Function to create users
 	public function createUser()
 	{	
-		if ($this->session->userdata('email') != '') 
-		{
-			//RULES FOR THE FORM´S VALIDATION
-			$this->form_validation->set_rules('username', 'Username', 'required');
-			$this->form_validation->set_rules('password','Password', 'required');
-			$this->form_validation->set_rules('passconf', 'Password Confirm', 'required|matches[password]');
-			$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		//RULES FOR THE FORM´S VALIDATION
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password','Password', 'required');
+		$this->form_validation->set_rules('passconf', 'Password Confirm', 'required|matches[password]');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 
-			if ($this->form_validation->run() == TRUE) 
-			{
-				$data = array(
-					'username' => $this->input->post('username'),
-					'password' => md5($this->input->post('password')),
-					'email'    => $this->input->post('email')
-				);
-				$this->users_model->crearusuario($data);
-				//LOAD OF THE SUCCESS PAGE
-				$this->load->view('header&footer/header');
-				$this->load->view('body/success');
-				$this->load->view('header&footer/footer');
-			}
-			else
-			{
-				$this->load->view('header&footer/header');
-				$this->load->view('body/create_user');
-				$this->load->view('header&footer/footer');
-			}
+		if ($this->form_validation->run() == TRUE) 
+		{
+			$data = array(
+				'username' => $this->input->post('username'),
+				'password' => md5($this->input->post('password')),
+				'email'    => $this->input->post('email')
+			);
+			$this->users_model->crearusuario($data);
+			//LOAD OF THE SUCCESS PAGE
+			$this->load->view('header&footer/header');
+			$this->load->view('body/success');
+			$this->load->view('header&footer/footer');
+		}
+		else
+		{
+			$this->load->view('header&footer/header');
+			$this->load->view('body/create_user');
+			$this->load->view('header&footer/footer');
+		}
+		
 	}
 
 	public function login() 
