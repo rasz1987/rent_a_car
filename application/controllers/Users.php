@@ -5,14 +5,16 @@ class Users extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->library('session');
-		$this->load->helper('url');
-		$this->load->helper('form');
-		$this->load->library('form_validation');
 		$this->load->model('users_model');
+
+		if (empty($this->session->userdata('email')))
+		{
+			redirect('login');
+		}
 
 	}
 
+	//Function to create users
 	public function createUser()
 	{	
 		if ($this->session->userdata('email') != '') 
@@ -42,11 +44,6 @@ class Users extends CI_Controller {
 				$this->load->view('body/create_user');
 				$this->load->view('header&footer/footer');
 			}
-		}
-		else
-		{
-			redirect('login');
-		}
 	}
 
 	public function login() 
