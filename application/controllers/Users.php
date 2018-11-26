@@ -7,12 +7,10 @@ class Users extends CI_Controller {
 		parent::__construct();
 		$this->load->model('users_model');
 
-		if (empty($this->session->userdata('email')))
-		{
-			redirect('login');
-		}
+		
 
 	}
+	
 
 	//Function to create users
 	public function createUser()
@@ -64,6 +62,9 @@ class Users extends CI_Controller {
 				$this->load->view('body/login');
 				$this->load->view('header&footer/footer');
 				
+
+				
+				
 			} 
 			else 
 			{
@@ -79,8 +80,11 @@ class Users extends CI_Controller {
 				}
 				else
 				{
-					$this->session->set_flashdata('error','Invalid username and password');
+					echo 'Invalid username or password';
+					
+					/*$this->session->set_flashdata('error','Invalid username and password');
 					redirect('login');
+					*/
 				}
 			}
 		}
