@@ -6,8 +6,8 @@ $(document).ready(function(){
 			type: 'POST',
 			dataType: 'json',
 			data: $('#myForm').serialize(),
-			error: function(response) {
-				$('#error').append('<div class="alert alert-danger">' +response.responseText+ '<div>');
+			error: function() {
+				$('#error').append('<div class="alert alert-danger">Something wrong<div>');
 				$('#myForm')[0].reset();
 			},
 			success: function(response) {

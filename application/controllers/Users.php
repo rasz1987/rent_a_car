@@ -76,7 +76,9 @@ class Users extends CI_Controller {
 				 	$session_data = array
 				 		('email' => $email);
 					$this->session->set_userdata($session_data);
-					redirect('home');
+					//redirect('home');
+					
+					echo 'success';
 				}
 				else
 				{
