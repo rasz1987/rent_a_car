@@ -1,18 +1,18 @@
 $(document).ready(function(){
 	$('#myForm').on('submit', function(event) {
 		event.preventDefault();
-		$.ajax({
-			url: '/rent_a_car/login',
-			type: 'POST',
-			dataType: 'json',
-			data: $('#myForm').serialize(),
-			error: function() {
-				$('#error').append('<div class="alert alert-danger">Something wrong<div>');
+		$.post('/rent_a_car/login', 
+		$('#myForm').serialize(), 
+		function(result) {
+			console.log(result);
+			if (result.failed) {
+				$('#error').append('<div class="alert alert-danger">' +result.message+ '<div>');
 				$('#myForm')[0].reset();
-			},
-			success: function(response) {
-				window.location.href('/rent_a_car/home');
-			}
-		})
+			} else if (result.success) {
+				$('#error').append('<div class="alert alert-success">' +result.message+ '<div>');
+				$('#myForm')[0].reset();
+			};
+		}, 
+		'json');
 	});
 });

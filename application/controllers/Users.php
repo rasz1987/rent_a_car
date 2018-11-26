@@ -78,11 +78,18 @@ class Users extends CI_Controller {
 					$this->session->set_userdata($session_data);
 					//redirect('home');
 					
-					echo 'success';
+					echo json_encode(array(
+						'success' => true,
+						'message' => 'Usuario logueado con exito')
+					);
 				}
 				else
 				{
-					echo 'Invalid username or password';
+					echo json_encode(array(
+						'failed' => true,
+						'message' => 'User or password incorrect')
+					);
+					//echo 'Invalid username or password';
 					
 					/*$this->session->set_flashdata('error','Invalid username and password');
 					redirect('login');
