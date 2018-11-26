@@ -11,7 +11,7 @@ $(document).ready(function(){
 				$('#myForm')[0].reset();
 			},
 			success: function(response) {
-				console.log(response)
+				window.location.href('/rent_a_car/home');
 			}
 		})
 	});
