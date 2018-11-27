@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 		<!-- One -->
 			<section id="one" class="wrapper style2">
+				<div id="success" class="row"></div>
 				<div class="inner">
 					<div class="grid-style">
 

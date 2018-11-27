@@ -31,10 +31,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!------------------------------------------------>
 
+
+
 <!----------------FORMULARIO--------------------->
 <div class="container">
 	<div class="row justify-content-center">
+		
 		<div class="col-md-4" id="main" >
+			<!----------------ALERT--------------------->
+			<div id="error" class="text-center">
+			</div>
+			<!------------------------------------------>
+			
 			<?php echo validation_errors('<div class="alert alert-danger">','</div>');?>
 			<?php echo form_open('/login', $form); ?>
 				<div class="form-group">
@@ -52,14 +60,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 	</div>
 	<!------------------------------------------------------->
-
-
-	<!----------------ALERT--------------------->
-	<div class="row justify-content-center">
-		<div id="error" class="col-md-8 text-center">
-		</div>
-	</div>
-	<!------------------------------------------>
 
 </div>
 
